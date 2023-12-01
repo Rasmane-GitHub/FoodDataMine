@@ -69,3 +69,4 @@ plot.show()
 # plt.show()
 
 # connection.close()
+ Rasy and Rosa
