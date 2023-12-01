@@ -1,6 +1,7 @@
 import pandas as pd
 import openpyxl
 import xlrd
+from fontTools.varLib import plot
 
 from sqlalchemy import create_engine
 from sqlalchemy import text
@@ -27,8 +28,7 @@ connection = engine.connect()
 tables.to_sql('temp_food', con=engine, if_exists='append')
 
 connection.execute(text('CREATE TABLE my_food like temp_food'))
-connection.execute(text(
-    'INSERT INTO my_food(ID, name, `Food Group`, Calories, `Fat (g)`, `Protein (g)`, `Carbohydrate (g)`, `Sugars (g)`) SELECT DISTINCT ID, name, `Food Group`, Calories, `Fat (g)`, `Protein (g)`, `Carbohydrate (g)`, `Sugars (g)` FROM temp_food'))
+connection.execute(text('INSERT INTO my_food(ID, name, `Food Group`, Calories, `Fat (g)`, `Protein (g)`, `Carbohydrate (g)`, `Sugars (g)`) SELECT DISTINCT ID, name, `Food Group`, Calories, `Fat (g)`, `Protein (g)`, `Carbohydrate (g)`, `Sugars (g)` FROM temp_food'))
 connection.execute(text('DROP TABLE temp_food'))
 connection.close()  # Close extension to database
 
@@ -36,11 +36,17 @@ connection.close()  # Close extension to database
 data = ['my_food']
 df = pd.read_sql_table('my_food', engine.connect())
 print(df)
+
 df.plot(x='Waffle Plain Frozen Ready-To-Heat Microwave', y='Calories')
-plt.xlable('Waffle Plain Frozen Ready-To-Heat Microwave')
+plt.xlabel('Waffle Plain Frozen Ready-To-Heat Microwave')
 plot.ylabel('Calories')
-plt.tile('Waffle Plain Frozen Ready-To-Heat Microwave', 'Calories')
+plt.title('Waffle Plain Frozen Ready-To-Heat Microwave', 'Calories')
 plot.show()
+# df.plot(x='Waffle Plain Frozen Ready-To-Heat Microwave', y='Calories')
+# plt.xlable('Waffle Plain Frozen Ready-To-Heat Microwave')
+# plot.ylabel('Calories')
+# plt.tile('Waffle Plain Frozen Ready-To-Heat Microwave', 'Calories')
+# plot.show()
 # print(df)
 #
 # plt.figure(figsize=(24, 24))
@@ -69,4 +75,4 @@ plot.show()
 # plt.show()
 
 # connection.close()
- Rasy and Rosa
+#Rasy and Rosa
