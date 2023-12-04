@@ -1,9 +1,8 @@
-# USE NOTES FOR PRESENTATION # 12/02/23
-# Import the necessary libraries
-# Pandas --- It is used for manipulation
-# sqlalchemy --- SQL toolkit and Object-relational Mapping library that provides a set of
-# application programming Interface  for connecting relational databases.
-# matplotlib.pyplot --- It is used for creating visualizations.
+# eam: FoodDataMine
+# Rosa Hulbert & Rasmane Sawadogo
+# NETWORK DATABASES (SQL) Fall Quarter 2023 - CNE 340 – 12/03/2023
+# WK12 - Final Project
+
 
 import pandas as pd
 from sqlalchemy import create_engine
@@ -54,3 +53,11 @@ for i, (group_name, group_df) in enumerate(grouped):
 
 fig.tight_layout(pad = 15.0)
 plt.show()
+
+
+# USE NOTES FOR PRESENTATION # 12/02/23
+# Import the necessary libraries
+# Pandas --- It is used for manipulation
+# sqlalchemy --- SQL toolkit and Object-relational Mapping library that provides a set of
+# application programming Interface  for connecting relational databases.
+# matplotlib.pyplot --- It is used for creating visualizations.
