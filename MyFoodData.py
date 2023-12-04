@@ -1,4 +1,4 @@
-# eam: FoodDataMine
+# Team: FoodDataMine
 # Rosa Hulbert & Rasmane Sawadogo
 # NETWORK DATABASES (SQL) Fall Quarter 2023 - CNE 340 – 12/03/2023
 # WK12 - Final Project
