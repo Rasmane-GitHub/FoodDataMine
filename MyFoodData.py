@@ -19,9 +19,10 @@ dbname = "fooddatamine"
 engine = create_engine("mysql+pymysql://{user}:{pw}@{host}/{db}".format(host=hostname, db=dbname, user=uname, pw=pwd))
 
 # 12/01/23
-# Import MyFoodData from Download folder on my local machine
-tables = pd.read_excel(r"C:\Users\Master_Ras\Downloads\MyFoodData.xlsx",sheet_name='Food',header=3)
-# print(tables)
+# Downloaded the Excel sheet from myfooddata.com and saved it  on my local machine
+# the file is read using pandas.
+tables = pd.read_excel(r"C:\Users\Master_Ras\Downloads\MyFoodData.xlsx", sheet_name='Food', header=3)
+print(tables)
 
 # 12/01/23
 # Connect to the database and store the data from tables into temporary table (temp_food)
@@ -37,23 +38,22 @@ connection.execute(text('INSERT INTO my_food(ID, name, `Food Group`, Calories, `
 connection.execute(text('DROP TABLE temp_food'))
 connection.close()
 
-# Reading from table - Saving in df variable
+# Reading the data - we saved it using the df variable
 df = pd.read_sql('SELECT * FROM my_food', engine)
 
 grouped = df.groupby("Food Group")
 
-fig, axes = plt.subplots(nrows = len(grouped), figsize = (10, 6 * len(grouped)))
-
+fig, axes = plt.subplots(nrows=len(grouped), figsize=(10, 6 * len(grouped)))
+# plotting
 # Looping to create each subplot
 for i, (group_name, group_df) in enumerate(grouped):
-    ax = axes[i] if len(grouped) > 1 else axes
-    group_df.plot(x = "Fat (g)", y = "Calories", kind = "scatter", ax = ax, title = f"Food group: {group_name}")
-    ax.set_xlabel("Fats in grams")
-    ax.set_ylabel("Calories")
+    ax = axes[i] if len('scatter') > 1 else axes
+    group_df.plot(x="Sugars (g)", y="Protein (g)", kind="scatter", ax=ax, title=f"Food Group: {group_name}")
+    ax.set_xlabel("Sugars in grams")
+    ax.set_ylabel("Protein in grams")
 
-fig.tight_layout(pad = 15.0)
+fig.tight_layout(pad=15.0)
 plt.show()
-
 
 # USE NOTES FOR PRESENTATION # 12/02/23
 # Import the necessary libraries
