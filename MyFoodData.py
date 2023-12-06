@@ -38,7 +38,7 @@ connection.execute(text('INSERT INTO my_food(ID, name, `Food Group`, Calories, `
 connection.execute(text('DROP TABLE temp_food'))
 connection.close()
 
-# Reading the data - we saved it using the df variable
+# Reading the data - we saved it using the df variablex
 df = pd.read_sql('SELECT * FROM my_food', engine)
 
 grouped = df.groupby("Food Group")
